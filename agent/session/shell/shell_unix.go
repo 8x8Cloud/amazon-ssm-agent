@@ -61,10 +61,10 @@ func StartPty(
 	//Start the command with a pty
 	var cmd *exec.Cmd
 	if strings.TrimSpace(shellProps.Linux.Commands) == "" || isSessionLogger {
-		cmd = exec.Command("sh", "-l")
+		cmd = exec.Command("bash", "-l")
 	} else {
 		commandArgs := append(utility.ShellPluginCommandArgs, "-l", shellProps.Linux.Commands)
-		cmd = exec.Command("sh", commandArgs...)
+		cmd = exec.Command("bash", commandArgs...)
 	}
 
 	//TERM is set as linux by pty which has an issue where vi editor screen does not get cleared.
